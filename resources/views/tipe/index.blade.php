@@ -25,9 +25,6 @@
                         <td>{{$data->nama}}</td>
                         <td>{{$data->Merk->nama}}</td>
                         <td>
-                            <a class="btn btn-success" href="{{ route('tipe.show',$data->id) }}">Show</a>
-                        </td>
-                        <td>
 
                           <a class="btn btn-warning" href="{{ route('tipe.edit',$data->id) }}">Edit</a>
                         </td>

@@ -16,7 +16,7 @@ class MobilController extends Controller
      */
     public function index()
     {
-        $a = Mobil::with('Merk','Member')->get();
+        $a = Mobil::all();
         return view('mobil.index',compact('a'));
    
     }
@@ -30,7 +30,7 @@ class MobilController extends Controller
     {
         $a = Merk::all();
         $b = Member::all();
-        return view('merk.create',compact('a','b'));
+        return view('mobil.create',compact('a','b'));
     }
 
     /**
@@ -42,17 +42,8 @@ class MobilController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'gambar' => 'required|max:255',
+            'gambar' => 'required',
             'nama' => 'required',
-            'warna' => 'required',
-            'transmisi' => 'required',
-            'varian' => 'required',
-            'cakupan_mesin' => 'required',
-            'penumpang' => 'required',
-            'kilometer' => 'required',
-            'tahun_keluar' => 'required',
-            'harga' => 'required',
-            'deskripsi' => 'required',
             'merk_id' => 'required',
             'tipe' => 'required',
             'member_id' => 'required',
@@ -62,15 +53,6 @@ class MobilController extends Controller
 
          $mobils = new Mobil;
          $mobils->nama = $request->nama;
-         $mobils->warna = $request->warna;
-         $mobils->transmisi = $request->transmisi;
-         $mobils->varian = $request->varian;
-         $mobils->cakupan_mesin = $request->cakupan_mesin;
-         $mobils->penumpang = $request->penumpang;
-         $mobils->kilometer = $request->kilometer;
-         $mobils->tahun_keluar = $request->tahun_keluar;
-         $mobils->harga = $request->harga;
-         $mobils->deskripsi = $request->deskripsi;
          $mobils->merk_id = $request->merk_id;
          $mobils->tipe = $request->tipe;
          $mobils->member_id = $request->member_id;
@@ -92,7 +74,7 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function show(Mobil $mobil)
+    public function show($id)
     {
         //
     }
@@ -103,14 +85,14 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mobil $mobil)
+    public function edit($id)
     {
-        $b = Mobil::findOrFail($id);
+        $c = Mobil::findOrFail($id);
         $a = Merk::all();
-        $c = Member::all();
+        $b = Member::all();
         $selectedMK = Mobil::findOrFail($id)->merk_id;
         $selectedMB = Mobil::findOrFail($id)->member_id;
-        return view('tipe.edit',compact('a','b','selectedMK','selectedMB'));
+        return view('mobil.edit',compact('a','b','c','selectedMK','selectedMB'));
     }
 
     /**
@@ -120,20 +102,11 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mobil $mobil)
+    public function update(Request $request,$id)
     {
         $request->validate([
-            'gambar' => 'required|max:255',
+            'gambar' => 'required',
             'nama' => 'required',
-            'warna' => 'required',
-            'transmisi' => 'required',
-            'varian' => 'required',
-            'cakupan_mesin' => 'required',
-            'penumpang' => 'required',
-            'kilometer' => 'required',
-            'tahun_keluar' => 'required',
-            'harga' => 'required',
-            'deskripsi' => 'required',
             'merk_id' => 'required',
             'tipe' => 'required',
             'member_id' => 'required',
@@ -141,29 +114,20 @@ class MobilController extends Controller
 
         ]);
 
-         $b = Mobil::findOrFail($id);
-         $mobils->nama = $request->nama;
-         $mobils->warna = $request->warna;
-         $mobils->transmisi = $request->transmisi;
-         $mobils->varian = $request->varian;
-         $mobils->cakupan_mesin = $request->cakupan_mesin;
-         $mobils->penumpang = $request->penumpang;
-         $mobils->kilometer = $request->kilometer;
-         $mobils->tahun_keluar = $request->tahun_keluar;
-         $mobils->harga = $request->harga;
-         $mobils->deskripsi = $request->deskripsi;
-         $mobils->merk_id = $request->merk_id;
-         $mobils->tipe = $request->tipe;
-         $mobils->member_id = $request->member_id;
+         $c= Mobil::findOrFail($id);
+         $c->nama = $request->nama;
+         $c->merk_id = $request->merk_id;
+         $c->tipe = $request->tipe;
+         $c->member_id = $request->member_id;
          
          if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $filename = str_random(6). '_'.$file->getClientOriginalName();
             $desinationPath = public_path() .DIRECTORY_SEPARATOR. 'img';
             $uploadSucces = $file->move($desinationPath, $filename);
-            $mobils->gambar = $filename;
+            $c->gambar = $filename;
         }
-         $mobils->save();
+         $c->save();
         return redirect()->route('mobil.index');
     }
 
@@ -173,7 +137,7 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mobil $mobil)
+    public function destroy($id)
     {
         $a = Mobil::findOrFail($id);
         $a->delete();

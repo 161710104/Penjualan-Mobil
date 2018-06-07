@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Merk;
 use App\Tipe;
+use File;
 use Illuminate\Http\Request;
 
 class MerkController extends Controller
@@ -47,6 +48,8 @@ class MerkController extends Controller
          $merks = new Merk;
          $merks->nama = $request->nama;
          $merks->deskripsi = $request->deskripsi;
+
+         
          if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $filename = str_random(6). '_'.$file->getClientOriginalName();
@@ -98,16 +101,33 @@ class MerkController extends Controller
 
         ]);
 
-         $a = Merk::findOrFail($id);
-         $a->nama = $request->nama;
-         $a->deskripsi = $request->deskripsi;
+         $a = Merk::find($id);
+         $a->update($request->all());
+
          if ($request->hasFile('gambar')) {
-            $file = $request->file('gambar');
-            $filename = str_random(6). '_'.$file->getClientOriginalName();
+         //mengambil gambar yang diupload berikut extensinya
+            $filename = null;
+            $uploaded_cover = $request->file('gambar');
+            $extension = $uploaded_cover->getClientOriginalExtension();
+
+        //membuat nama file random dengan extension
+            $filename = md5(time()). '.' . $extension;
             $desinationPath = public_path() .DIRECTORY_SEPARATOR. 'img';
-            $uploadSucces = $file->move($desinationPath, $filename);
-            $a->gambar = $filename;
-        }
+
+            $upload_cover->move($desinationPath, $filename);
+
+            //hapus cover lama jika ada 
+            if($a->gambar){
+                $old_cover = $a->gambar;
+                $filepath = publish_path(). DIRECTORY_SEPARATOR. 'img' . DIRECTORY_SEPARATOR . $a->gambar;
+
+                try{
+                    File::delete($filepath);
+                } catch (FileNotFoundException $e) {
+                    //
+                }
+            }
+            }
          $a->save();
         return redirect()->route('merkmobil.index');
 
@@ -119,10 +139,20 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Merk $merk)
     {
-        $a = Merk::findOrFail($id);
-        $a->delete();
+        $merk = Merk::findOrFail($merk->id);
+        if ($merk->gambar){
+            $old_foto = $merk->gambar;
+            $filepath = public_path() . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $a->gambar;
+
+            try{
+            File::delete($filepath);
+            } catch (FileNotFoundException $e){
+
+            }
+        }
+        $merk->delete();
         return redirect()->route('merkmobil.index');
     }
 }

@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/baru', function () {
+    return view('layouts.table');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -24,7 +30,14 @@ Route::get('/layout', function () {
     return view('tipe.index');
 });
 
-Route::resource('/merkmobil','MerkController');
-Route::resource('/member','MemberController');
-Route::resource('/berita','BeritaController');
-Route::resource('/tipe','TipeController');
+Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'role:admin']],function (){
+    Route::resource('/merkmobil','MerkController');
+	Route::resource('/mobil','MobilController');
+	Route::resource('/member','MemberController');
+	Route::resource('/berita','BeritaController');
+	Route::resource('/tipe','TipeController');
+	Route::resource('/detail_mobil','DetailMobilController');
+
+
+    });
+

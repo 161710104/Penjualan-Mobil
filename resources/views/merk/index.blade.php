@@ -28,10 +28,6 @@
                                   <td>{{ $data->nama }}</td>
                                   <td>{{ $data->deskripsi }}</td>
                                   <td>@foreach($data->Tipe as $jd)<li>{{ $jd->nama }}@endforeach</td>
-
-                                  <td>
-                            <a class="btn btn-success" href="{{ route('merkmobil.show',$data->id) }}">Show</a>
-                        </td>
                         <td>
                             <a class="btn btn-warning" href="{{ route('merkmobil.edit',$data->id) }}">Edit</a>
                         </td>

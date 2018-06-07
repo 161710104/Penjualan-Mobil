@@ -12,6 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- tambahkan css select2 --}}
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+<link href="/css/jquery.dataTables.css" rel="stylesheet">
+<link href="/css/dataTables.bootstrap.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -29,16 +35,13 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Laravel
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -68,13 +71,26 @@
                         @endguest
                     </ul>
                 </div>
+                @yield('content')
             </div>
         </nav>
-
         @yield('content')
     </div>
 
     <!-- Scripts -->
+    ....
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- tambahkan js select2 --}}
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.js') }}"></script>
+    <script src="{{ asset('js/select2.full.js') }}"></script>
+    <script src="{{ asset('js/select2.full.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+    </script>
 </body>
 </html>

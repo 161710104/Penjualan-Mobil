@@ -13,13 +13,10 @@
                     <thead class=" text-primary">
                       <th>Nomer</th>
                       <th>Gambar</th>
-                      <th>Nama</th>
-                      <th>email</th>
-                      <th>Jenis Kelamin</th>
-                      <th>No Hp</th>
-                      <th>Lokasi</th>
-                      <th>Alamat</th>
-                      <th>Mobil</th>
+                      <th>Nama_Mobil</th>
+                      <th>Merk Mobil</th>
+                      <th>Tipe Mobil</th>
+                      <th>Nama Penjual</th>
                       <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -30,21 +27,14 @@
                                   <td>{{ $no++ }}</td>
                                   <td><img src="{{asset('/img/'.$data->gambar.'')}} " width="70" height="70"></td>
                                   <td>{{ $data->nama }}</td>
-                                  <td>{{ $data->email }}</td>
-                                  <td>{{ $data->jenis_kelamin }}</td>
-                                  <td>{{ $data->no_hp }}</td>
-                                  <td>{{ $data->lokasi }}</td>
-                                  <td>{{ $data->alamat }}</td>
-                                  <td>@foreach($data->Mobil as $jd)<li>{{ $jd->nama }}@endforeach</td>
-
-                                  <td>
-                            <a class="btn btn-success" href="{{ route('member.show',$data->id) }}">Show</a>
+                                  <td>{{ $data->Merk->nama }}</td>
+                                  <td>{{ $data->tipe }}</td>
+                                  <td>{{ $data->Member->nama }}</td>
+                        <td>
+                            <a class="btn btn-warning" href="{{ route('mobil.edit',$data->id) }}">Edit</a>
                         </td>
                         <td>
-                            <a class="btn btn-warning" href="{{ route('member.edit',$data->id) }}">Edit</a>
-                        </td>
-                        <td>
-                            <form method="post" action="{{ route('member.destroy',$data->id) }}">
+                            <form method="post" action="{{ route('mobil.destroy',$data->id) }}">
                                 <input name="_token" type="hidden" value="{{ csrf_token() }}">
                                 <input type="hidden" name="_method" value="DELETE">
 

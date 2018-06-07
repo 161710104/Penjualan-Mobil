@@ -65,9 +65,10 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show($id)
     {
-        //
+        $a = Berita::findOrFail($id);
+        return view('berita.show',compact('a'));
     }
 
     /**
@@ -76,7 +77,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit($id)
     {
         $a = Berita::findOrFail($id);
         return view('berita.edit',compact('a'));
@@ -89,13 +90,12 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request,$id)
     {
         $request->validate([
             'gambar' => 'required',
             'judul' => 'required',
             'isi' => 'required',
-            'tanggal_rilis' => 'required',
 
 
         ]);
@@ -103,7 +103,6 @@ class BeritaController extends Controller
          $beritas = Berita::findOrFail($id);
          $beritas->judul = $request->judul;
          $beritas->isi = $request->isi;
-         $beritas->tanggal_rilis = $request->tanggal_rilis;
          if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $filename = str_random(6). '_'.$file->getClientOriginalName();
@@ -121,7 +120,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $berita)
+    public function destroy($id)
     {
         $a = Berita::findOrFail($id);
         $a->delete();
