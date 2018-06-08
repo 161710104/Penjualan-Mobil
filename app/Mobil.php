@@ -12,7 +12,7 @@ class Mobil extends Model
     //------------------------------------------------
 
     	public function Member(){
-    		return $this->belongsTo('App\Mobil' , 'member_id');
+    		return $this->belongsTo('App\Member' , 'member_id');
     	}
 
 

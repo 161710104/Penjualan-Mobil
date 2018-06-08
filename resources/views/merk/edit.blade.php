@@ -1,13 +1,22 @@
 @extends('layouts.layout')
 @section('content')
-<div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="title">Tambah Data</h5>
-              </div>
-              <div class="card-body">
+<main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i> Data Table</h1>
+          <p>Table to display analytical data effectively</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
               <form class="form-horizontal form-label-left" action="{{ route('merkmobil.update',$a->id) }}" method="post" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="PATCH">
               {{ csrf_field() }}
@@ -41,7 +50,8 @@
                       <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Deskripsi</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea name="deskripsi" class="ckeditor" value="{{$a->deskripsi}}" required="">
+                          <textarea name="deskripsi" class="ckeditor" value="" required="">
+                            {{$a->deskripsi}}
                           @if ($errors->has('deskripsi'))
                             <span class="help-block">
                               <strong>{{ $errors->first('deskripsi') }}</strong>
@@ -63,5 +73,11 @@
           </div>
         </div>
       </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</main>
 
 @endsection

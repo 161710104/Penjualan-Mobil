@@ -1,13 +1,22 @@
 @extends('layouts.layout')
 @section('content')
-<div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="title">Tambah Data</h5>
-              </div>
-              <div class="card-body">
+<main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i> Data Table</h1>
+          <p>Table to display analytical data effectively</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
               <form class="form-horizontal form-label-left" action="{{ route('mobil.update',$c->id) }}" method="post" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="PATCH">
             
@@ -29,7 +38,7 @@
               <div class="form-group {{ $errors->has('nama') ? ' has-error' : '' }}">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Nama Mobil</label>
                         <div class="col-md-9 pr-1">
-                          <input type="text" name="nama" class="form-control"  required>
+                          <input type="text" name="nama" class="form-control" value="{{$c->nama}}" required>
                           @if ($errors->has('nama'))
                             <span class="help-block">
                               <strong>{{ $errors->first('nama') }}</strong>
@@ -57,7 +66,7 @@
                   <div class="form-group {{ $errors->has('tipe') ? ' has-error' : '' }}">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Nama Tipe</label>
                         <div class="col-md-9 pr-1">
-                          <input type="text" name="tipe" class="form-control"  required>
+                          <input type="text" name="tipe" class="form-control" value="{{$c->tipe}}"  required>
                           @if ($errors->has('tipe'))
                             <span class="help-block">
                               <strong>{{ $errors->first('tipe') }}</strong>
@@ -101,5 +110,11 @@
           </div>
         </div>
       </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</main>
 
 @endsection

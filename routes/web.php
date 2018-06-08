@@ -35,9 +35,12 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'role:admin']],funct
 	Route::resource('/mobil','MobilController');
 	Route::resource('/member','MemberController');
 	Route::resource('/berita','BeritaController');
-	Route::resource('/tipe','TipeController');
+	Route::resource('/comment','CommentController');
 	Route::resource('/detail_mobil','DetailMobilController');
-
+	Route::resource('/authors','AuthorsController');
+	Route::get('/calender', function () {
+    return view('backend.calender');
+		});
 
     });
 

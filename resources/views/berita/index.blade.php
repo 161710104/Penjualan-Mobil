@@ -17,9 +17,12 @@
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
-              <table class="table table-hover table-bordered" id="sampleTable">
-                <button class="btn btn-outline-primary" type="button">Primary</button>
-                          <thead class=" text-primary">
+              <a class="btn btn-outline-primary" href="{{ route('berita.create') }}"><i class="fa fa-plus-square"></i>Tambah</a>
+              <br>
+              <br>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
                       <th>Nomer</th>
                       <th>Gambar</th>
                       <th>Judul</th>
@@ -52,12 +55,19 @@
                       
                                 </tr>
                                 @endforeach
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
 @endsection

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Merk;
-use App\Tipe;
 use File;
 use Illuminate\Http\Request;
 

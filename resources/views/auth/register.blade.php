@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
+<div id="register" class="animate form registration_form">
+<section class="login_content">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -73,5 +75,7 @@
             </div>
         </div>
     </div>
+</div>
+</section>
 </div>
 @endsection

@@ -16,8 +16,6 @@
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
-<link href="/css/jquery.dataTables.css" rel="stylesheet">
-<link href="/css/dataTables.bootstrap.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -79,8 +77,6 @@
 
     <!-- Scripts -->
     ....
-<script src="/js/jquery.dataTables.min.js"></script>
-<script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- tambahkan js select2 --}}
     <script src="{{ asset('js/select2.min.js') }}"></script>
