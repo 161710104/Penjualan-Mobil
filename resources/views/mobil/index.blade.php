@@ -29,6 +29,7 @@
                       <th>Merk Mobil</th>
                       <th>Tipe Mobil</th>
                       <th>Nama Penjual</th>
+                      <th>Nama User</th>
                       <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@
                                   <td>{{ $data->Merk->nama }}</td>
                                   <td>{{ $data->tipe }}</td>
                                   <td>{{ $data->Member->nama }}</td>
+                                  <td>{{ Auth::user()->name }}</td>
                         <td>
                             <a class="btn btn-warning" href="{{ route('mobil.edit',$data->id) }}">Edit</a>
                         </td>

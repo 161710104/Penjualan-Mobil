@@ -19,10 +19,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <!-- vendor css -->
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+  <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+  <!-- Vendor CSS-->
+  <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
+  <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+  <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
+  <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+  <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/css/jquery.dataTables.css" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap.css" rel="stylesheet">
+    
   </head>
 
 
@@ -44,7 +57,8 @@
       }
     </script>
 
-  <body class="animsition" onload="startTime()">
+  <body onload="startTime()">
+    <font style="color: black">
     <!-- Navbar-->
     @include('partials.navbar')
     <!-- Sidebar menu-->
@@ -69,9 +83,33 @@
 </div>
 </div>
     </main>
+    <!-- Vendor js -->
+    <!-- Jquery JS-->
+  <script src="/vendor/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap JS-->
+  <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+  <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+  <!-- Vendor JS       -->
+  <script src="/vendor/slick/slick.min.js">
+  </script>
+  <script src="/vendor/wow/wow.min.js"></script>
+  <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+  </script>
+  <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+  <script src="/vendor/counter-up/jquery.counterup.min.js">
+  </script>
+  <script src="/vendor/circle-progress/circle-progress.min.js"></script>
+  <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+  <script src="/vendor/select2/select2.min.js">
+  </script>
+
+
+
     <!-- Essential javascripts for application to work-->
     <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
       $(document).ready( function () {
     $('#myTable').DataTable();
@@ -143,5 +181,6 @@
         ga('send', 'pageview');
       }
     </script>
+  </font>
   </body>
 </html>

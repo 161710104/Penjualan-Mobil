@@ -35,12 +35,25 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'role:admin']],funct
 	Route::resource('/mobil','MobilController');
 	Route::resource('/member','MemberController');
 	Route::resource('/berita','BeritaController');
+	Route::get('query', 'BeritaController@search');
 	Route::resource('/comment','CommentController');
 	Route::resource('/detail_mobil','DetailMobilController');
 	Route::resource('/authors','AuthorsController');
 	Route::get('/calender', function () {
     return view('backend.calender');
 		});
+	Route::get('/coba', function () {
+    return view('backend.coba');
+		});
+
+	Route::get('export/berita', [
+	'as' => 'export.berita',
+	'uses' => 'BeritaController@export'
+		]);
+	Route::post('export/berita', [
+	'as' => 'export.berita.post',
+	'uses' => 'BeritaController@exportPost'
+]);
 
     });
 
