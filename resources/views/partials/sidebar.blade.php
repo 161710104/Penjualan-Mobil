@@ -11,8 +11,10 @@
         <li><a class="app-menu__item" href="{{ route('mobil.index') }}"><i class="app-menu__icon fa fa-car"></i><span class="app-menu__label">Mobil</span></a></li>
         <li><a class="app-menu__item" href="{{ route('detail_mobil.index') }}"><i class="app-menu__icon fa fa-automobile"></i><span class="app-menu__label"> Detail Mobil</span></a></li>
         <li><a class="app-menu__item" href="{{ route('merkmobil.index') }}"><i class="app-menu__icon fa fa-tags"></i><span class="app-menu__label">Merk Mobil</span></a></li>
-        <li><a class="app-menu__item" href="{{ route('member.index') }}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label"> Member</span></a></li>
         <li><a class="app-menu__item" href="{{ route('berita.index') }}"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label"> Berita</span></a></li>
+        <li><a class="app-menu__item" href="{{ route('contact.index') }}"><i class="app-menu__icon fa fa-contact fa-lg"></i><span class="app-menu__label"> Contact</span></a></li>
+        <li><a class="app-menu__item" href="{{ route('about.index') }}"><i class="app-menu__icon fa fa-user fa-lg"></i><span class="app-menu__label"> About</span></a></li>
+        <li><a class="app-menu__item" href="{{ route('user.index') }}"><i class="app-menu__icon fa fa-user fa-lg"></i><span class="app-menu__label"> User</span></a></li>
       </ul>
     </aside>
     

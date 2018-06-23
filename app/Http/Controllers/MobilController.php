@@ -143,4 +143,12 @@ class MobilController extends Controller
         $a->delete();
         return redirect()->route('mobil.index');
     }
+
+    public function memberindex()
+    {
+        $a = Mobil::all();
+        return view('member.home',compact('a'));
+   
+    }
+
 }

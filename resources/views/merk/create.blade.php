@@ -44,21 +44,7 @@
                         @endif
                         </div>
                       </div>
-
-
-                      <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Deskripsi</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea name="deskripsi" class="ckeditor" required="">
-                          @if ($errors->has('deskripsi'))
-                            <span class="help-block">
-                              <strong>{{ $errors->first('deskripsi') }}</strong>
-                            </span>
-                        @endif
-                        </textarea>
-                        </div>
-                      </div>
-
+                      
                    <div class="form-group">
                         <div class="col-md-9 col-md-offset-3">
                           <button type="submit" class="btn btn-primary">Cancel</button>

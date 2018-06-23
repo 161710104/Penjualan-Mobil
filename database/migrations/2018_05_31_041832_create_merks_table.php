@@ -17,7 +17,6 @@ class CreateMerksTable extends Migration
             $table->increments('id');
             $table->string('gambar');
             $table->string('nama');
-            $table->longText('deskripsi');
             $table->timestamps();
         });
     }

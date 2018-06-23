@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     protected function memberDashboard()
     {
-        return view ('home');
+        return view ('member.home');
     }
 
 }

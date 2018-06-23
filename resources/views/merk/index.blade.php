@@ -26,7 +26,6 @@
                       <th>Nomer</th>
                       <th>Logo</th>
                       <th>Nama</th>
-                      <th>Deskrpsi</th>
                       <th colspan="3">Action</th>
                     </thead>
                     <tbody>
@@ -37,7 +36,6 @@
                                   <td>{{ $no++ }}</td>
                                   <td><img src="{{asset('/img/'.$data->gambar.'')}} " width="70" height="70"></td>
                                   <td>{{ $data->nama }}</td>
-                                  <td>{!! $data->deskripsi !!}</td>
                         <td>
                             <a class="btn btn-warning" href="{{ route('merkmobil.edit',$data->id) }}">Edit</a>
                         </td>

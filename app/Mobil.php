@@ -22,7 +22,7 @@ class Mobil extends Model
 
 
     	public function detail_mobil(){
-    		return $this->hasOne('App\Mobil' , 'mobil_id');
+    		return $this->hasOne('App\Detail_mobil' , 'mobil_id');
     	}
 
 

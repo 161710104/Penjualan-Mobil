@@ -40,13 +40,11 @@ class MerkController extends Controller
         $request->validate([
             'gambar' => 'required',
             'nama' => 'required',
-            'deskripsi' => 'required',
 
         ]);
 
          $merks = new Merk;
          $merks->nama = $request->nama;
-         $merks->deskripsi = $request->deskripsi;
 
          
          if ($request->hasFile('gambar')) {
@@ -96,7 +94,6 @@ class MerkController extends Controller
         $request->validate([
             'gambar' => 'required',
             'nama' => 'required',
-            'deskripsi' => 'required',
 
         ]);
 

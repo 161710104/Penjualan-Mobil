@@ -25,20 +25,24 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/layout', function () {
-    return view('tipe.index');
+Route::get('/contact', function () {
+    return view('frontend.contact');
 });
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+
 
 Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'role:admin']],function (){
     Route::resource('/merkmobil','MerkController');
 	Route::resource('/mobil','MobilController');
-	Route::resource('/member','MemberController');
 	Route::resource('/berita','BeritaController');
 	Route::get('query', 'BeritaController@search');
 	Route::resource('/comment','CommentController');
 	Route::resource('/detail_mobil','DetailMobilController');
-	Route::resource('/authors','AuthorsController');
+	Route::resource('/user','UserController');
+	Route::resource('/contact','ContactController');
+	Route::resource('/about','AboutController');
 	Route::get('/calender', function () {
     return view('backend.calender');
 		});
@@ -56,4 +60,10 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth' , 'role:admin']],funct
 ]);
 
     });
+Route::group(['prefix' => 'member', 'middleware' =>['auth' , 'role:member']],function (){
+	Route::get('/mobil','MobilController@memberindex');
+	Route::resource('/detail_mobil','DetailMobilController');
+});
+
+Route::get('catalog/{id}', 'FrontendController@showpermerk');
 
